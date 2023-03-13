@@ -7,6 +7,11 @@ def fix_youtube_url(url):
     if is_short_youtube_url(url):
         video_id = url.split('youtu.be/')[1]
         url = f'https://www.youtube.com/watch?v={video_id}'
+        st.write("The given URL was in short form. Converted to long form URL.")
+    else:
+        video_id = url.split('watch?v=')[1]
+        url = f'https://youtu.be/{video_id}'
+        st.write("The given URL was in long form. Converted to short form URL.")
     return url
 
 def app():
@@ -18,7 +23,7 @@ def app():
     
     # Add About section
     st.sidebar.title('About')
-    st.sidebar.write('This app helps you convert short YouTube URLs to long form URLs. Simply enter a YouTube URL and click the "Convert" button to get the long form URL. If the URL is already in the long form, the app will let you know. Try it out now!')
+    st.sidebar.write('This app helps you convert YouTube URLs to long or short form URLs. Simply enter a YouTube URL and click the "Convert" button to get the desired format. If the URL is already in the desired format, the app will let you know. Try it out now!')
     
     # Add text input
     st.write('Enter a YouTube URL:')
